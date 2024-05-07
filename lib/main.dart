@@ -17,6 +17,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        textTheme: TextTheme(
+            titleLarge: TextStyle(
+              color:Color.fromARGB(255, 81, 212, 194),
+            ),
+        ),
       ),
       home: Bottomnavbar(),
     );

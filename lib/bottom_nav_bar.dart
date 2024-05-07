@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:project6/features/chats.dart';
+import 'package:project6/features/favorite.dart';
 import 'package:project6/features/homepage.dart';
+import 'package:project6/features/profile.dart';
 
 class Bottomnavbar extends StatefulWidget {
   const Bottomnavbar({super.key});
@@ -13,6 +16,10 @@ class _BottomnavbarState extends State<Bottomnavbar> {
 
   @override
   Widget build(BuildContext context) {
+    int red=81;
+    int green=212;
+    int blue=194;
+    Color mycolor =Color.fromARGB(255, red, green, blue);
     return Scaffold(
 
       body: bottomnavBody(bottomNavIndex),
@@ -21,27 +28,27 @@ class _BottomnavbarState extends State<Bottomnavbar> {
 
           BottomNavigationBarItem(
 
-            activeIcon: Icon(Icons.home,color: Colors.blue),
-            icon: Icon(Icons.home_outlined,color: Colors.blue),
+            activeIcon: Icon(Icons.home,color:mycolor),
+            icon: Icon(Icons.home_outlined,color: mycolor),
             label: 'home',
           ),
 
           BottomNavigationBarItem(
-            activeIcon: Icon(Icons.favorite,color: Colors.blue),
-            icon: Icon(Icons.favorite_border,color: Colors.blue),
+            activeIcon: Icon(Icons.favorite,color:mycolor),
+            icon: Icon(Icons.favorite_border,color: mycolor),
             label: 'favorite',
           ),
 
           BottomNavigationBarItem(
-            activeIcon: Icon(Icons.chat_bubble,color: Colors.blue),
-            icon: Icon(Icons.chat_bubble_outline,color: Colors.blue),
+            activeIcon: Icon(Icons.chat_bubble,color: mycolor),
+            icon: Icon(Icons.chat_bubble_outline,color: mycolor),
             label: 'Chat',
           ),
 
 
           BottomNavigationBarItem(
-            activeIcon: Icon(Icons.account_circle_rounded,color: Colors.blue),
-            icon: Icon(Icons.account_circle_outlined,color: Colors.blue),
+            activeIcon: Icon(Icons.account_circle_rounded,color:mycolor),
+            icon: Icon(Icons.account_circle_outlined,color: mycolor),
             label: 'profile',
           ),
 
@@ -65,11 +72,11 @@ class _BottomnavbarState extends State<Bottomnavbar> {
       case 0:
         return Homepage();
       case 1:
-        return Text('liked');
+        return Favorite();
       case 2:
-        return Text('chat');
+        return Chats();
       default:
-        return Text('profile');
+        return Profile();
 
     }
   }

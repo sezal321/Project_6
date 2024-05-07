@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project6/features/sub_route/filter.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -10,6 +11,11 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
+    int red=81;
+    int green=212;
+    int blue=194;
+    Color mycolor =Color.fromARGB(255, red, green, blue);
+
     return Scaffold(
 
       appBar: AppBar
@@ -18,7 +24,6 @@ class _HomepageState extends State<Homepage> {
         [
         Expanded(
           child: GestureDetector(
-
             onTap: () {
               showSearch(
                 context: context,
@@ -27,31 +32,36 @@ class _HomepageState extends State<Homepage> {
             },
 
             child: Container(
+
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(24.0),
-                border: Border.all(color: Colors.blue),
+                border: Border.all(color: mycolor),
               ),
-              margin: EdgeInsets.all(8.0),
+              margin: EdgeInsets.only(left: 16.0,right: 16.0,top: 4.0,bottom: 8.0),
               child:
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(left: 8.0),
-                    child: Text(
-                      'Search',
-                       style: TextStyle(
-                         color: Colors.blue,
-                        fontSize: 16.0,
-                       ),
+                    padding: EdgeInsets.only(left: 16.0),
+                    child: IconButton(
+                      icon: Image.asset('assets/icons/search_icon.png',color: mycolor,),
+                      onPressed: null,
                     ),
                   ),
 
                   Padding(
                     padding: EdgeInsets.only(right: 8.0),
                     child: IconButton(
-                      icon: Icon(Icons.search,color: Colors.blue),
-                      onPressed: null,
+                     icon: Image.asset('assets/icons/filter_icon.png',color: mycolor,),
+                      onPressed: ()
+                      {
+                       Navigator.push
+                         (
+                         context,
+                        MaterialPageRoute(builder: (context)=>Filter()),
+                       );
+                     }
                     ),
                   ),
                 ],
@@ -86,11 +96,13 @@ class CustomSearchDelegate extends SearchDelegate{
     'Raspberries',
   ];
 
+
   @override
   List<Widget> buildActions(BuildContext context){
+
     return[
       IconButton(
-          icon: const Icon(Icons.clear),
+          icon: const Icon(Icons.clear,color: Color.fromARGB(255, 81, 212, 194)),
            onPressed: () {
           query = '';
           },
@@ -101,7 +113,7 @@ class CustomSearchDelegate extends SearchDelegate{
   @override
   Widget buildLeading(BuildContext context){
     return IconButton(
-        icon: const Icon(Icons.arrow_back),
+        icon: const Icon(Icons.arrow_back,color:Color.fromARGB(255, 81, 212, 194),),
         onPressed: () {
           close(context, null);
         },
@@ -126,7 +138,10 @@ class CustomSearchDelegate extends SearchDelegate{
         var result = matchQuery[index];
 
           return ListTile(
-          title: Text(result),
+          title: Text(
+              result,
+            style: TextStyle(color:Color.fromARGB(255, 81, 212, 194),),
+          ),
             );
          }
         );
@@ -150,7 +165,11 @@ class CustomSearchDelegate extends SearchDelegate{
           var result = matchQuery[index];
 
           return ListTile(
-            title: Text(result),
+            title: Text(
+              result,
+              style: TextStyle(color:Color.fromARGB(255, 81, 212, 194),),
+
+            ),
           );
         }
     );
