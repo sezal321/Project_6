@@ -164,6 +164,8 @@ class _HomepageState extends State<Homepage> {
                       config: CalendarDatePicker2Config(
                         calendarType: CalendarDatePicker2Type.range,
                         selectedDayHighlightColor: mycolor,
+                        selectableDayPredicate: (DateTime day) => day.isAfter(DateTime.now().subtract(Duration(days: 1))), // Allow today and future dates
+
                       ),
                       value: _selectedDates,
                       onValueChanged: (dates) {
